@@ -1,0 +1,28 @@
+const int sensorpin=A0;
+const int ledPin=13;
+const int buzzPin=12;
+const int dryThreshold=800; 
+const int wetThreshold=500; 
+void setup() {
+  Serial.begin(9600);
+  pinMode(ledPin,OUTPUT);
+  pinMode(ledPin,OUTPUT);
+  Serial.println("soil moisture sensor  test starting");
+}
+void loop() {
+  int sensorvalue=analogRead(sensorpin);
+    Serial.println("soil moisture level");
+    Serial.println(sensorvalue);
+    if(sensorvalue > dryThreshold){
+     Serial.print("soil is dry.watering is required");
+     digitalWrite(ledPin,HIGH);
+     digitalWrite(buzzPin,HIGH);
+  }
+  else {
+    Serial.println("soil is wet");
+    digitalWrite(ledPin,LOW);
+    digitalWrite(buzzPin,LOW);
+  }
+}
+
+                   
